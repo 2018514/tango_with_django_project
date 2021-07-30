@@ -6,6 +6,7 @@ import django
 django.setup()
 from rango.models import Category, Page
 
+
 def populate():
     python_pages = [
         {'title': 'Official Python Tutorial',
