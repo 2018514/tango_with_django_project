@@ -20,10 +20,17 @@ def index(request):
     context_dict['categories'] = category_list
     context_dict['pages'] = page_list
 
+    request.session.set_test_cookie()
+
     return render(request, 'rango/index.html', context=context_dict)
 
 def about(request):
     context_dict={'boldmessage': 'This tutorial has been put together by Liena Wu'}
+    
+    if request.session.test_cookie_worked():
+        print("TEST COOKIE WORKED!")
+        request.session.delete_test_cookie()
+
     return render(request, 'rango/about.html', context=context_dict)
 
 def show_category(request, category_name_slug):
